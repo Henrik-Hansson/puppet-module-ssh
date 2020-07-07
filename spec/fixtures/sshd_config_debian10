@@ -13,20 +13,19 @@
 # possible, but leave them commented.  Uncommented options change a
 # default value.
 
-Include /etc/ssh/sshd_config.d/*.conf
-
 #Port 22
 Port 22
 #Protocol 2,1
 Protocol 2
-#AddressFamily any
-AddressFamily any
 
 # HostKey for protocol version 1
 #HostKey /etc/ssh/ssh_host_key
 # HostKeys for protocol version 2
 #HostKey /etc/ssh/ssh_host_rsa_key
 #HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
 
 # Lifetime and size of ephemeral version 1 server key
 #KeyRegenerationInterval 1h
@@ -82,8 +81,6 @@ ChallengeResponseAuthentication yes
 # GSSAPI options
 #GSSAPIAuthentication no
 GSSAPIAuthentication yes
-#GSSAPICleanupCredentials yes
-GSSAPICleanupCredentials yes
 
 # Set this to 'yes' to enable PAM authentication, account processing,
 # and session processing. If this is enabled, PAM authentication will
@@ -120,8 +117,6 @@ PrintMotd yes
 ClientAliveInterval 0
 ClientAliveCountMax 3
 #ShowPatchLevel no
-#UseDNS yes
-UseDNS yes
 #PidFile /var/run/sshd.pid
 #MaxStartups 10:30:100
 #MaxSessions 10
